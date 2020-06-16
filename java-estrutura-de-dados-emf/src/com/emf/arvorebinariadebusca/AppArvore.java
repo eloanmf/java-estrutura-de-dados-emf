@@ -25,6 +25,8 @@ public class AppArvore {
 		arvore.imprimirPosOrdem();
 		System.out.println();
 		arvore.imprimirOrdemInvestida();
+		
+		System.out.println("Hello git");
 	}
 
 }
