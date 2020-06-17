@@ -19,6 +19,46 @@ public class Arvore {
 		//System.out.println("Criou a arvore com elemento " + elem.getValor());
 	}
 	
+	//remover o no da arvore
+	public Arvore remover(Elemento elem) {
+		//caso 1 - achei o elemento
+		if(this.ele.getValor() == elem.getValor()) {
+			//caso mais simples - o elemento está em um nó sem filhos
+			if(this.dir == null && this.esq == null) {
+				return null;
+			} else {
+				//caso 2 - eu tenho filhos na esquerda mas não tenho na direita.
+				if(this.esq != null && this.dir == null) {
+					return this.esq;
+				} else if (this.dir != null && this.esq == null) {
+					return this.dir;
+				}
+				// caso 4 - filho dos dois mados (esq e dir)
+				else {
+					//adotar a estratégia do maior dentre os menores!
+					Arvore aux = this.esq;
+					while(aux.dir != null) {
+						aux = aux.dir;
+					}
+					//troco os elementos da árvore
+					this.ele = aux.getEle();  //o nó atual recebe o elemento do aux
+											 // o maior entre os menores
+					aux.setEle(elem);		//insiro no nó folha (lá embaixo) o elemento a ser eliminado.
+					this.esq = esq.remover(elem);
+				}	
+			}		
+		}
+		else if(elem.getValor() < this.ele.getValor()) {
+			//se for menor é dado a responsabilidade á sub-arvore da esquerda.
+			this.esq = this.esq.remover(elem);
+		}
+		else if(elem.getValor() > this.ele.getValor()) {
+			//se for maior é dado a responsabilidade á sub-arvore da direita.
+			this.dir = this.dir.remover(elem);
+		}
+		return this;
+	}
+	
 	//metodos de controle
 	public boolean isEmpty() {
 		return (this.ele == null);
