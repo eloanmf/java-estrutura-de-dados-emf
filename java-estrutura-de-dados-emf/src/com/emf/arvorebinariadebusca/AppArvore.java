@@ -1,5 +1,7 @@
 package com.emf.arvorebinariadebusca;
 
+
+
 public class AppArvore {
 
 	public static void main(String[] args) {

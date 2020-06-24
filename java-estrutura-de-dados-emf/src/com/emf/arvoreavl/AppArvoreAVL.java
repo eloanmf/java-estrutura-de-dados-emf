@@ -19,5 +19,4 @@ public class AppArvoreAVL {
             System.out.println(arvore.printArvore(0));
         }
 	}
-
 }
